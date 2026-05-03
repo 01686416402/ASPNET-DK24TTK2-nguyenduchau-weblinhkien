@@ -4,9 +4,9 @@ ASPNET-DK24TTK2-nguyenduchau-weblinhkien
 Giới thiệu
 Thông tin sinh viên
 Họ tên: Nguyễn Đức Hậu
-MSSV: 01686416402
+MSSV: 0386416402
 Lớp: DK24TTK2
-Email: (điền email)
+Email: haund150798@tvu-onschool.edu.vn
 Website gồm các chức năng cơ bản:
 // Ngày 02/05/2026 thực hiện //
 Hiển thị danh sách sản phẩm
@@ -22,4 +22,7 @@ src/
  ├── Web.config
  ├── image/
  └── DBLinhKien.bak
- 
+ // Ngày 03/05/2026 thực hiện //
+Bổ sung chức năng mới
+Chức năng Đăng nhập, đăng xuất, đăng ký
+Chức năng quản lý sản phẩm cho phép web thêm, xoá, edit sản phẩm chỉ có user admin thực hiện được
