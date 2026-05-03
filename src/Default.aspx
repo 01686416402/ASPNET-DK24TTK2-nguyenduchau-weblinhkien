@@ -6,13 +6,8 @@
     <title>Web Điện Tử</title>
 
     <style>
-        body {
-            font-family: Arial;
-            background: #f5f5f5;
-            margin: 0;
-        }
+        body { font-family: Arial; background: #f5f5f5; margin: 0; }
 
-        /* HEADER */
         .topbar {
             background: #007bff;
             color: white;
@@ -25,62 +20,30 @@
             font-weight: bold;
         }
 
-        .clear {
-            clear: both;
-        }
+        .topbar-right { float: right; }
 
-        /* CONTAINER */
-        .container {
-            width: 1100px;
-            margin: auto;
-        }
-
-        .search-box {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        /* LAYOUT */
-        .layout {
-            display: flex;
-            gap: 15px;
-        }
-
-        /* LEFT MENU */
-        .left-menu {
-            width: 220px;
-            background: white;
-            padding: 12px;
-            border: 1px solid #ddd;
-        }
-
-        .left-menu a {
-            display: block;
-            padding: 6px;
+        .topbar-right a {
+            color: white;
+            margin-left: 12px;
             text-decoration: none;
-            color: #333;
+            font-weight: bold;
         }
 
-        .left-menu a:hover {
-            background: #eee;
+        .clear { clear: both; }
+
+        .container {
+            width: 1000px;
+            margin: 20px auto;
         }
 
-        /* RIGHT */
-        .right-content {
-            flex: 1;
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        /* PRODUCT */
         .product {
             width: 180px;
             border: 1px solid #ddd;
             background: white;
             padding: 10px;
             margin: 8px;
+            float: left;
             text-align: center;
-            border-radius: 6px;
         }
 
         .product img {
@@ -92,87 +55,63 @@
         .price {
             color: red;
             font-weight: bold;
-            margin: 5px 0;
         }
     </style>
 </head>
 
 <body>
 
-<form id="form1" runat="server">
+<form runat="server">
 
     <!-- HEADER -->
     <div class="topbar">
+
         <div class="topbar-left">
-            🔌 Web Điện Tử
+            Web Điện Tử
         </div>
+
+        <div class="topbar-right">
+
+            <asp:Label ID="lblUser" runat="server"></asp:Label>
+
+            <asp:HyperLink ID="lnkLogin" runat="server" NavigateUrl="Login.aspx">Đăng nhập</asp:HyperLink>
+            <asp:HyperLink ID="lnkRegister" runat="server" NavigateUrl="Register.aspx">Đăng ký</asp:HyperLink>
+            <asp:HyperLink ID="lnkLogout" runat="server" NavigateUrl="Logout.aspx">Đăng xuất</asp:HyperLink>
+
+            <asp:HyperLink ID="lnkAdmin" runat="server" NavigateUrl="QLSanPham.aspx">Quản lý</asp:HyperLink>
+
+        </div>
+
         <div class="clear"></div>
     </div>
 
     <!-- CONTENT -->
     <div class="container">
 
-        <!-- SEARCH -->
-        <div class="search-box">
-            <asp:TextBox ID="txtSearch" runat="server" Width="200" placeholder="Tìm..." />
-            <asp:Button ID="btnSearch" runat="server" Text="Tìm" OnClick="btnSearch_Click" />
-        </div>
+        <asp:Repeater ID="rpSP" runat="server">
+            <ItemTemplate>
 
-        <div class="layout">
+                <div class="product">
 
-            <!-- LEFT MENU -->
-            <div class="left-menu">
+                    <img src='<%# "image/" + Eval("HinhAnh") %>'
+                         onerror="this.src='image/no-image.png'" />
 
-                <b>Danh mục</b>
-                <hr />
+                    <div><b><%# Eval("TenSP") %></b></div>
 
-                <a href="Default.aspx">Tất cả</a>
+                    <div class="price">
+                        <%# String.Format("{0:N0}", Eval("Gia")) %> đ
+                    </div>
 
-                <asp:Repeater ID="rpLoai" runat="server">
-                    <ItemTemplate>
-                        <a href='Default.aspx?loai=<%# Eval("Loai") %>'>
-                            <%# Eval("Loai") %>
+                    <div>
+                        <a href='<%# "ChiTiet.aspx?id=" + Eval("MaSP") %>'>
+                            Xem chi tiết
                         </a>
-                    </ItemTemplate>
-                </asp:Repeater>
+                    </div>
 
-            </div>
+                </div>
 
-            <!-- RIGHT -->
-            <div class="right-content">
-
-                <asp:Repeater ID="rpSP" runat="server">
-
-                    <ItemTemplate>
-
-                        <div class="product">
-
-                            <img src='<%# "image/" + Eval("HinhAnh") %>'
-                                 onerror="this.src='image/no-image.png'" />
-
-                            <div><b><%# Eval("TenSP") %></b></div>
-
-                            <div class="price">
-                                <%# String.Format("{0:N0}", Eval("Gia")) %> đ
-                            </div>
-
-                            <div><%# Eval("Loai") %></div>
-
-                            <div style="margin-top:6px;">
-                                <a href='<%# "ChiTiet.aspx?id=" + Eval("MaSP") %>'>
-                                    Xem chi tiết
-                                </a>
-                            </div>
-
-                        </div>
-
-                    </ItemTemplate>
-
-                </asp:Repeater>
-
-            </div>
-
-        </div>
+            </ItemTemplate>
+        </asp:Repeater>
 
     </div>
 

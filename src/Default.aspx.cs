@@ -9,67 +9,46 @@ namespace WebDientu
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {
-                LoadLoai();
                 LoadSanPham();
-            }
-        }
 
-        // LOAD LOẠI
-        void LoadLoai()
-        {
-            ketnoi kn = new ketnoi();
-            DataTable dt = kn.getData("SELECT DISTINCT Loai FROM SanPham");
-
-            rpLoai.DataSource = dt;
-            rpLoai.DataBind();
+            CheckLogin();
         }
 
         // LOAD SẢN PHẨM
         void LoadSanPham()
         {
             ketnoi kn = new ketnoi();
-
-            string loai = Request.QueryString["loai"];
-            string keyword = Request.QueryString["search"];
-
-            string sql = "SELECT * FROM SanPham WHERE 1=1";
-
-            if (!string.IsNullOrEmpty(loai))
-                sql += " AND Loai = N'" + loai + "'";
-
-            if (!string.IsNullOrEmpty(keyword))
-                sql += " AND TenSP LIKE N'%" + keyword + "%'";
-
-            DataTable dt = kn.getData(sql);
+            DataTable dt = kn.getData("SELECT * FROM SanPham");
 
             rpSP.DataSource = dt;
             rpSP.DataBind();
         }
 
-        // SEARCH
-        protected void btnSearch_Click(object sender, EventArgs e)
+        // LOGIN UI
+        void CheckLogin()
         {
-            string keyword = txtSearch.Text.Trim();
-            string loai = Request.QueryString["loai"];
-
-            string url = "Default.aspx";
-
-            if (!string.IsNullOrEmpty(keyword) || !string.IsNullOrEmpty(loai))
+            if (Session["user"] == null)
             {
-                url += "?";
+                lblUser.Text = "";
 
-                if (!string.IsNullOrEmpty(keyword))
-                    url += "search=" + keyword;
-
-                if (!string.IsNullOrEmpty(loai))
-                {
-                    if (!string.IsNullOrEmpty(keyword)) url += "&";
-                    url += "loai=" + loai;
-                }
+                lnkLogin.Visible = true;
+                lnkRegister.Visible = true;
+                lnkLogout.Visible = false;
+                lnkAdmin.Visible = false;
             }
+            else
+            {
+                lblUser.Text = "Xin chào: " + Session["user"].ToString();
 
-            Response.Redirect(url);
+                lnkLogin.Visible = false;
+                lnkRegister.Visible = false;
+                lnkLogout.Visible = true;
+
+                if (Session["role"] != null && Session["role"].ToString() == "admin")
+                    lnkAdmin.Visible = true;
+                else
+                    lnkAdmin.Visible = false;
+            }
         }
     }
 }
