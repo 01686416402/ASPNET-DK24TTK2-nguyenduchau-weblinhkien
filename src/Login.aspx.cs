@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Collections.Generic;
 
 namespace WebDientu
 {
@@ -53,7 +54,7 @@ namespace WebDientu
                     else
                     {
                         lblMsg.ForeColor = System.Drawing.Color.Red;
-                        lblMsg.Text = "Sai tài khoản hoặc mật khẩu!";
+                        lblMsg.Text = "❌ Sai tài khoản hoặc mật khẩu!";
                         reader.Close();
                     }
                 }
@@ -68,8 +69,16 @@ namespace WebDientu
             else
                 lblUser.Text = "";
 
-            
-    
+            int count = 0;
+
+            if (Session["cart"] != null)
+            {
+                var cart = (List<CartItem>)Session["cart"];
+                foreach (var item in cart)
+                    count += item.SoLuong;
+            }
+
+            lblCartCount.Text = count.ToString();
         }
     }
 }

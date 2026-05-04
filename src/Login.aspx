@@ -79,7 +79,7 @@
     <div class="topbar">
 
         <div class="topbar-left">
-            Web Điện Tử
+            🔌 Web Điện Tử
         </div>
 
         <div class="topbar-right">
@@ -87,7 +87,10 @@
             <asp:Label ID="lblUser" runat="server"></asp:Label>
 
             <a href="Default.aspx">Trang chủ</a>
-            <a href="Register.aspx">Đăng ký</a>
+
+            <a href="GioHang.aspx">
+                🛒 Giỏ hàng (<asp:Label ID="lblCartCount" runat="server"></asp:Label>)
+            </a>
 
         </div>
 

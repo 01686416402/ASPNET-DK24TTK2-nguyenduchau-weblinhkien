@@ -11,7 +11,7 @@ namespace WebDientu
 {
 
 
-    public partial class ChiTiet
+    public partial class GioHang
     {
 
         /// <summary>
@@ -33,66 +33,48 @@ namespace WebDientu
         protected global::System.Web.UI.WebControls.Label lblCartCount;
 
         /// <summary>
-        /// imgSP control.
+        /// pnlEmpty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgSP;
+        protected global::System.Web.UI.WebControls.Panel pnlEmpty;
 
         /// <summary>
-        /// lblTen control.
+        /// pnlCart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTen;
+        protected global::System.Web.UI.WebControls.Panel pnlCart;
 
         /// <summary>
-        /// lblGia control.
+        /// rpCart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblGia;
+        protected global::System.Web.UI.WebControls.Repeater rpCart;
 
         /// <summary>
-        /// lblLoai control.
+        /// lblTotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLoai;
+        protected global::System.Web.UI.WebControls.Label lblTotal;
 
         /// <summary>
-        /// lblThuocTinh control.
+        /// btnPay control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblThuocTinh;
-
-        /// <summary>
-        /// txtSL control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSL;
-
-        /// <summary>
-        /// btnAdd control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnAdd;
+        protected global::System.Web.UI.WebControls.Button btnPay;
     }
 }

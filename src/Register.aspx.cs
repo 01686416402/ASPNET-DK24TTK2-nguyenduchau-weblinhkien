@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Collections.Generic;
 
 namespace WebDientu
 {
@@ -8,7 +9,7 @@ namespace WebDientu
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadHeader();
+            LoadHeader(); 
         }
 
         protected void btnRegister_Click(object sender, EventArgs e)
@@ -29,9 +30,7 @@ namespace WebDientu
             {
                 conn.Open();
 
-                // kiểm tra tồn tại
-                SqlCommand check = new SqlCommand(
-                    "SELECT COUNT(*) FROM Users WHERE Username=@u", conn);
+                SqlCommand check = new SqlCommand("SELECT COUNT(*) FROM Users WHERE Username=@u", conn);
                 check.Parameters.AddWithValue("@u", user);
 
                 int count = (int)check.ExecuteScalar();
@@ -43,7 +42,6 @@ namespace WebDientu
                     return;
                 }
 
-                // thêm user
                 SqlCommand cmd = new SqlCommand(
                     "INSERT INTO Users(Username, Password, Role) VALUES(@u,@p,'user')", conn);
 
@@ -60,13 +58,24 @@ namespace WebDientu
             Response.Redirect("Default.aspx");
         }
 
-        // ===== HEADER (ĐÃ XOÁ CART) =====
+        // ===== HEADER =====
         void LoadHeader()
         {
             if (Session["user"] != null)
                 lblUser.Text = "Xin chào: " + Session["user"];
             else
                 lblUser.Text = "";
+
+            int count = 0;
+
+            if (Session["cart"] != null)
+            {
+                var cart = (List<CartItem>)Session["cart"];
+                foreach (var item in cart)
+                    count += item.SoLuong;
+            }
+
+            lblCartCount.Text = count.ToString();
         }
     }
 }

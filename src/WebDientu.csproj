@@ -112,6 +112,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
+    <Content Include="GioHang.aspx" />
     <Content Include="Global.asax" />
     <Content Include="image\cap1.jpg" />
     <Content Include="image\cap2.jpg" />
@@ -129,6 +130,7 @@
     <Content Include="image\vo3.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
+    <Content Include="QLDonHang.aspx" />
     <Content Include="QLSanPham.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -187,9 +189,11 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="ThanhToan.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CartItem.cs" />
     <Compile Include="ChiTiet.aspx.cs">
       <DependentUpon>ChiTiet.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -203,6 +207,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GioHang.aspx.cs">
+      <DependentUpon>GioHang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GioHang.aspx.designer.cs">
+      <DependentUpon>GioHang.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -223,6 +234,13 @@
       <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QLDonHang.aspx.cs">
+      <DependentUpon>QLDonHang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="QLDonHang.aspx.designer.cs">
+      <DependentUpon>QLDonHang.aspx</DependentUpon>
+    </Compile>
     <Compile Include="QLSanPham.aspx.cs">
       <DependentUpon>QLSanPham.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -243,6 +261,13 @@
     </Compile>
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ThanhToan.aspx.cs">
+      <DependentUpon>ThanhToan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ThanhToan.aspx.designer.cs">
+      <DependentUpon>ThanhToan.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

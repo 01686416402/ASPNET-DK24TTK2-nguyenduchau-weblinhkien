@@ -12,7 +12,7 @@
             margin: 0;
         }
 
-        /* ===== HEADER MỚI ===== */
+        /* ===== HEADER ===== */
         .topbar {
             background: #007bff;
             color: white;

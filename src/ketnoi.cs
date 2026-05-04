@@ -9,7 +9,7 @@ public class ketnoi
 
     public ketnoi()
     {
-       
+        // lấy từ Web.config (chuẩn nhất)
         connStr = WebConfigurationManager.ConnectionStrings["conn"].ConnectionString;
     }
 

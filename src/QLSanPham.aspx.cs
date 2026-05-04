@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Collections.Generic;
 
 namespace WebDientu
 {
@@ -13,17 +14,16 @@ namespace WebDientu
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // 🔐 CHẶN USER (chỉ admin)
+            // 🔐 CHẶN USER
             if (Session["role"] == null || Session["role"].ToString() != "admin")
                 Response.Redirect("Default.aspx");
 
             if (!IsPostBack)
                 LoadData();
 
-            LoadHeader();
+            LoadHeader(); // 
         }
 
-        // ===== LOAD DATA =====
         void LoadData()
         {
             using (SqlConnection conn = new SqlConnection(connStr))
@@ -37,7 +37,6 @@ namespace WebDientu
             }
         }
 
-        // ===== THÊM =====
         protected void btnThem_Click(object sender, EventArgs e)
         {
             string ten = txtTen.Text.Trim();
@@ -82,7 +81,6 @@ namespace WebDientu
             LoadData();
         }
 
-        // ===== XOÁ =====
         protected void gvSP_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             int id = Convert.ToInt32(gvSP.DataKeys[e.RowIndex].Value);
@@ -99,7 +97,6 @@ namespace WebDientu
             LoadData();
         }
 
-        // ===== EDIT =====
         protected void gvSP_RowEditing(object sender, GridViewEditEventArgs e)
         {
             gvSP.EditIndex = e.NewEditIndex;
@@ -112,7 +109,6 @@ namespace WebDientu
             LoadData();
         }
 
-        // ===== UPDATE =====
         protected void gvSP_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
             int id = Convert.ToInt32(gvSP.DataKeys[e.RowIndex].Value);
@@ -144,13 +140,24 @@ namespace WebDientu
             LoadData();
         }
 
-        // ===== HEADER (ĐÃ XOÁ CART) =====
+        // ===== HEADER =====
         void LoadHeader()
         {
             if (Session["user"] != null)
                 lblUser.Text = "Xin chào: " + Session["user"];
             else
                 lblUser.Text = "";
+
+            int count = 0;
+
+            if (Session["cart"] != null)
+            {
+                var cart = (List<CartItem>)Session["cart"];
+                foreach (var item in cart)
+                    count += item.SoLuong;
+            }
+
+            lblCartCount.Text = count.ToString();
         }
     }
 }

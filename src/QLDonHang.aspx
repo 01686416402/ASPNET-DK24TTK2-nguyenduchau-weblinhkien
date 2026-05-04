@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="WebDientu.Register" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="QLDonHang.aspx.cs" Inherits="WebDientu.QLDonHang" %>
 
 <!DOCTYPE html>
 <html>
 <head runat="server">
-    <title>Đăng ký</title>
+    <title>Đơn hàng</title>
 
     <style>
         body {
@@ -35,45 +35,48 @@
             font-weight: bold;
         }
 
+        .topbar-right a:hover {
+            text-decoration: underline;
+        }
+
         .clear {
             clear: both;
         }
 
-        /* ===== BOX ===== */
-        .box {
-            width: 320px;
-            margin: 60px auto;
+        /* ===== CONTAINER ===== */
+        .container {
+            width: 900px;
+            margin: 30px auto;
             background: white;
-            padding: 25px;
+            padding: 20px;
             border-radius: 8px;
+        }
+
+        h3 {
+            margin-top: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
             text-align: center;
         }
 
-        input {
-            width: 100%;
-            padding: 8px;
-            margin: 8px 0;
-        }
-
-        .btn {
+        th {
             background: #007bff;
             color: white;
-            border: none;
-            padding: 10px;
-            width: 100%;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        .btn:hover {
-            background: #0056b3;
         }
     </style>
 </head>
 
 <body>
 
-<form runat="server" autocomplete="off">
+<form runat="server">
 
     <!-- HEADER -->
     <div class="topbar">
@@ -97,25 +100,14 @@
         <div class="clear"></div>
     </div>
 
-    <!-- REGISTER BOX -->
-    <div class="box">
+    <!-- CONTENT -->
+    <div class="container">
 
-        <h3>Đăng ký</h3>
+        <h3>📦 Đơn hàng</h3>
 
-        <asp:TextBox ID="txtUser" runat="server" placeholder="Tài khoản"></asp:TextBox>
-
-        <asp:TextBox ID="txtPass" runat="server"
-            TextMode="Password"
-            placeholder="Mật khẩu"></asp:TextBox>
-
-        <asp:Button ID="btnRegister" runat="server"
-            Text="Đăng ký"
-            CssClass="btn"
-            OnClick="btnRegister_Click" />
-
-        <br /><br />
-
-        <asp:Label ID="lblMsg" runat="server"></asp:Label>
+        <asp:GridView ID="gvDonHang" runat="server"
+            AutoGenerateColumns="true"
+            GridLines="None" />
 
     </div>
 

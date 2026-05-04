@@ -52,6 +52,7 @@
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 10px #ccc;
+            align-items: flex-start;
         }
 
         /* IMAGE */
@@ -72,6 +73,33 @@
             font-weight: bold;
             margin: 10px 0;
         }
+
+        .qty {
+            margin-top: 10px;
+        }
+
+        input {
+            width: 60px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        /* BUTTON FIX */
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 22px;
+            background: #28a745;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .btn:hover {
+            background: #218838;
+        }
     </style>
 </head>
 
@@ -87,7 +115,15 @@
         </div>
 
         <div class="topbar-right">
+
+            <asp:Label ID="lblUser" runat="server"></asp:Label>
+
             <a href="Default.aspx">Trang chủ</a>
+
+            <a href="GioHang.aspx">
+                🛒 Giỏ hàng (<asp:Label ID="lblCartCount" runat="server"></asp:Label>)
+            </a>
+
         </div>
 
         <div class="clear"></div>
@@ -123,10 +159,17 @@
                     <asp:Label ID="lblThuocTinh" runat="server" />
                 </p>
 
-               
-                <p style="color:green; font-weight:bold; margin-top:20px;">
-                    ✔ Sản phẩm đang có sẵn
+                <p class="qty">
+                    Số lượng:
+                    <asp:TextBox ID="txtSL" runat="server" Text="1"></asp:TextBox>
                 </p>
+
+              
+                <asp:LinkButton ID="btnAdd" runat="server"
+                    CssClass="btn"
+                    OnClick="btnAdd_Click">
+                    🛒 Thêm vào giỏ hàng
+                </asp:LinkButton>
 
             </div>
 
