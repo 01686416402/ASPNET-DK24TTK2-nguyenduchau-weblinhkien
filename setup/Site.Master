@@ -1,3 +1,0 @@
-﻿<head runat="server">
-    <title><%: Page.Title %></title>
-</head>
