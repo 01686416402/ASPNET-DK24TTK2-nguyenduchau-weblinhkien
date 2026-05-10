@@ -74,3 +74,5 @@ Kết quả đạt được
 - Hệ thống hoạt động ổn định, dữ liệu được lưu trữ và xử lý đúng.
  Ghi chú
 - Dự án đã hoàn thiện, sẵn sàng viết báo cáo file .doc và chuẩn bị demo.
+- // Ngày 10/05/2026 thực hiện //
+- Hoàn thành báo cáo .doc. Kết thúc đồ án
